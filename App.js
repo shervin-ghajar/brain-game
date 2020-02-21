@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
-const Intro = require('./assets/animations/intro.json')
+import Intro from './assets/animations/intro.json'
+
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
   }
-
-  componentDidMount() {
-
+  renderGameTitle() {
+    return (
+      <View>
+        <Text style={styles.titleStyle}>BRAIN GAMES</Text>
+      </View>
+    )
   }
-
   render() {
     return (
       <View style={styles.view}>
         <View style={styles.animationContainer}>
           <LottieView source={Intro} autoPlay loop resizeMode="cover" />
         </View>
+        {this.renderGameTitle()}
       </View>
     );
   }
@@ -35,6 +39,11 @@ const styles = {
     width: 200,
     height: 200,
     alignItems: "center",
-    marginBottom: 150,
+    marginBottom: 50,
   },
+  titleStyle: {
+    color: "yellow",
+    fontSize: 25,
+    fontFamily: "#F2DA69"
+  }
 }
