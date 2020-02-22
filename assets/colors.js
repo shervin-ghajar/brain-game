@@ -1,0 +1,1 @@
+export const introColor = "#FFF6AF"
