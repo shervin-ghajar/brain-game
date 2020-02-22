@@ -1,13 +1,14 @@
 import React from 'react';
 import { Text, TouchableOpacity, Image } from 'react-native';
 
-const ButtonS1 = ({ btnContainerStyle, imageSource, imageStyle, }) => {
-    console.warn(1, imageSource)
+const ButtonS1 = ({ btnContainerStyle, imageSource, onPress, text, textColor }) => {
     return (
-        <TouchableOpacity style={{ ...styles.btnContainer, btnContainerStyle }}>
-            <Image style={{ ...styles.img, imageStyle }} source={imageSource} />
-            <Text style={styles.text}>
-                Press to Play
+        <TouchableOpacity
+            onPress={onPress}
+            style={{ ...styles.btnContainer, btnContainerStyle }}>
+            <Image style={{ ...styles.img }} source={imageSource} />
+            <Text style={{ ...styles.text, color: textColor }}>
+                {text}
             </Text>
         </TouchableOpacity>
     );
