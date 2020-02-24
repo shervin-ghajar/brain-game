@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 // import { Provider } from 'react-redux';
 // import { PersistGate } from 'redux-persist/lib/integration/react';
 // ----------------------------------------------------------------
@@ -14,13 +14,16 @@ export default class App extends Component {
   // ----------------------------------------------------------------
   render() {
     return (
-      <RootSwitch />
+      <View style={styles.view}>
+        <StatusBar hidden />
+        <RootSwitch />
+      </View>
     );
   }
   // ----------------------------------------------------------------
 }
 const styles = StyleSheet.create({
-  safeArea: {
+  view: {
     flex: 1,
     backgroundColor: '#fff'
   }
