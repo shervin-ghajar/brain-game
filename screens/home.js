@@ -31,7 +31,7 @@ class Home extends Component {
     }
 
     timeCounter = () => {
-        this.setState({ timer: this.state.timer + 5 }, () => {
+        this.setState({ timer: this.state.timer + 1 }, () => {
             if (this.state.timer > 59) {
                 if (this.state.levelCount !== data.length) {
                     clearInterval(this.interval)
@@ -50,11 +50,11 @@ class Home extends Component {
 
     renderPlay = () => {
         return (
-            <View style={styles.view}>
+            <View style={[styles.view, { alignItems: "center" }]}>
                 <ButtonS1
                     onPress={this.handlePlay}
                     imageSource={require("../assets/images/play-2.png")}
-                    text={this.state.tryAgain ? "Play Again" : "Press to Play"}
+                    text={this.state.tryAgain ? "Try Again" : null}
                     textColor={introColor}
                 />
             </View>
@@ -98,7 +98,7 @@ class Home extends Component {
         let content = []
         if (this.state.timer < 31) {
             content.push(
-                <View style={styles.animationContainer}>
+                <View key={this.state.timer + "great_job"} style={styles.animationContainer}>
                     <LottieView
                         source={finishAnimation}
                         autoPlay
@@ -109,13 +109,13 @@ class Home extends Component {
             )
         } else if (this.state.timer < 51) {
             content.push(
-                <View style={styles.container}>
+                <View key={this.state.timer + "good_job"}>
                     <Text style={{ color: "white" }}>Good Job</Text>
                 </View>
             )
         } else {
             content.push(
-                <View style={styles.container}>
+                <View key={this.state.timer + "not_bad"} >
                     <Text style={{ color: "white" }}>Not Bad</Text>
                 </View>
             )
@@ -142,11 +142,6 @@ class Home extends Component {
 
 const styles = {
     view: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: "#001046",
-    },
-    container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: "center",

@@ -7,9 +7,13 @@ const ButtonS1 = ({ btnContainerStyle, imageSource, onPress, text, textColor }) 
             onPress={onPress}
             style={{ ...styles.btnContainer, btnContainerStyle }}>
             <Image style={{ ...styles.img }} source={imageSource} />
-            <Text style={{ ...styles.text, color: textColor }}>
-                {text}
-            </Text>
+            {
+                text ?
+                    <Text style={{ ...styles.text, color: textColor }}>
+                        {text}
+                    </Text> : null
+            }
+
         </TouchableOpacity>
     );
 }
