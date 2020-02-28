@@ -1,9 +1,16 @@
 import React from 'react';
-import { Text, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 
-const ButtonS2 = ({ onPress, imageSource, borderColor }) => (
-    <TouchableOpacity style={[styles.btnContainer, { borderColor }]} onPress={onPress}>
-        <Image style={{ ...styles.img }} source={imageSource} />
+const ButtonS2 = ({ onPress, text, imageSource, imageStyle, borderColor, btnContainerStyle }) => (
+    <TouchableOpacity style={[styles.btnContainer, btnContainerStyle, borderColor ? { borderColor } : { borderWidth: 0 }]} onPress={onPress}>
+        <Image style={{ ...styles.img, ...imageStyle }} source={imageSource} />
+        {
+            text ?
+                <View style={{ alignSelf: "center" }}>
+                    <Text style={{ ...styles.text, color: "white", }}>{text}</Text>
+                </View>
+                : null
+        }
     </TouchableOpacity>
 );
 
@@ -19,5 +26,9 @@ const styles = {
         width: 50,
         height: 50,
     },
+    text: {
+        fontFamily: "serif",
+        fontSize: 13,
+    }
 }
 export { ButtonS2 };

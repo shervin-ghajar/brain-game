@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Animated, Easing } from 'react-native';
+import { View, Text, Animated, Easing, BackHandler, Dimensions } from 'react-native';
 import LottieView from 'lottie-react-native';
 //---------------------------------------------------------------------------------
-import { ButtonS1, LevelComponent } from '../components';
-import { introColor, greenColor, redColor } from '../assets/colors';
+import { ButtonS1, LevelComponent, ButtonS2 } from '../components';
+import { introColor, greenColor, redColor, orangeColor } from '../assets/colors';
 import { data } from "../services/api"
 import finishAnimation from '../assets/animations/ontime-finished.json'
 //---------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ class Home extends Component {
     timerColor = () => {
         let time = this.state.timer
         if (time > 30 && time < 51) {
-            return "#ff5531"
+            return orangeColor
         } else if (time > 50) {
             return redColor
         }
@@ -43,7 +43,7 @@ class Home extends Component {
     }
 
     handlePlay = () => {
-        this.setState({ isPlayed: true, tryAgain: false, timer: 0 }, () => {
+        this.setState({ isFinished: false, isPlayed: true, tryAgain: false, levelCount: 0, timer: 0 }, () => {
             this.interval = setInterval(this.timeCounter, 1000);
         })
     }
@@ -57,6 +57,9 @@ class Home extends Component {
                     text={this.state.tryAgain ? "Try Again" : null}
                     textColor={introColor}
                 />
+                <View style={{ position: "absolute", bottom: 20, justifyContent: "center" }}>
+                    <ButtonS2 text={"Exit"} onPress={() => BackHandler.exitApp()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
+                </View>
             </View>
         )
     }
@@ -82,10 +85,10 @@ class Home extends Component {
                 <View style={styles.view}>
                     <View style={{ flexDirection: "row", alignItems: "center", justifyContent: 'center', marginTop: 20 }}>
                         <View style={{ backgroundColor: greenColor, width: 110, alignItems: "center", borderWidth: 1, borderTopLeftRadius: 10, borderColor: "white" }}>
-                            <Text style={{ color: "white", fontFamily: "serif" }}>Round {this.state.levelCount + 1} of {data.length}</Text>
+                            <Text style={{ ...styles.text, color: "white" }}>Round {this.state.levelCount + 1} of {data.length}</Text>
                         </View>
                         <View style={{ backgroundColor: this.timerColor(), width: 110, alignItems: "center", borderWidth: 1, borderTopRightRadius: 10, borderColor: "white" }}>
-                            <Text style={{ color: "white", fontFamily: "serif" }}>30:{this.state.timer < 10 ? "0" + this.state.timer : this.state.timer}</Text>
+                            <Text style={{ ...styles.text, color: "white" }}>30:{this.state.timer < 10 ? "0" + this.state.timer : this.state.timer}</Text>
                         </View>
                     </View>
                     <LevelComponent title={title} isSmile={isSmile} onPress={this.handleOnPress} answer={answer} />
@@ -98,34 +101,50 @@ class Home extends Component {
         let content = []
         if (this.state.timer < 31) {
             content.push(
-                <View key={this.state.timer + "great_job"} style={styles.animationContainer}>
-                    <LottieView
-                        source={finishAnimation}
-                        autoPlay
-                        loop
-                        resizeMode="cover" />
-                    <Text style={{ color: "white" }}>Great Job</Text>
+                <View style={styles.contentContainer} key={this.state.timer + "_perfect"}>
+                    <Text style={{ ...styles.text, color: greenColor, fontSize: 40, fontWeight: "bold", }}>Perfect</Text>
+                    <Text style={{ ...styles.text, color: greenColor, fontSize: 20, }}>0s - 30s</Text>
                 </View>
             )
         } else if (this.state.timer < 51) {
             content.push(
-                <View key={this.state.timer + "good_job"}>
-                    <Text style={{ color: "white" }}>Good Job</Text>
+                <View style={styles.contentContainer} key={this.state.timer + "_great"}>
+                    <Text style={{ ...styles.text, color: orangeColor, fontSize: 40, fontWeight: "bold", }}>Great</Text>
+                    <Text style={{ ...styles.text, color: orangeColor, fontSize: 20, }}>30s - 50s</Text>
                 </View>
             )
         } else {
             content.push(
-                <View key={this.state.timer + "not_bad"} >
-                    <Text style={{ color: "white" }}>Not Bad</Text>
+                <View style={styles.contentContainer} key={this.state.timer + "_good"} >
+                    <Text style={{ ...styles.text, color: redColor, fontSize: 40, fontWeight: "bold", }}>Good</Text>
+                    <Text style={{ ...styles.text, color: redColor, fontSize: 20, }}>50s - 60s</Text>
                 </View>
             )
         }
         return (
             <View style={styles.view}>
-                {content}
+                <View style={styles.animationContainer}>
+                    <LottieView
+                        source={finishAnimation}
+                        autoPlay
+                        loop
+                        resizeMode="cover" />
+                    <View style={{ flexDirection: "column", position: "absolute", bottom: 100 }}>
+                        {content}
+                    </View>
+                    <View style={{ position: "absolute", bottom: 20, alignItems: "center" }}>
+                        <Text style={{ ...styles.text, color: introColor, fontSize: 20, fontWeight: "bold", }}>Your Score: {this.state.timer}s</Text>
+                        <Text style={{ ...styles.text, color: "white", fontSize: 17, marginVertical: 5 }}>Best Score: 27s</Text>
+                    </View>
+                </View>
+                <View style={{ width: deviceWidth, flexDirection: "row", position: "absolute", bottom: 20, alignItems: "center", justifyContent: "space-around" }}>
+                    <ButtonS2 onPress={{}} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
+                    <ButtonS2 onPress={() => this.handlePlay()} imageSource={require("../assets/images/retry-icon.png")} />
+                </View>
             </View>
         )
     }
+
 
     render() {
         if (this.state.isFinished) {
@@ -139,6 +158,10 @@ class Home extends Component {
         return this.renderPlay()
     }
 }
+
+
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 
 const styles = {
     view: {
@@ -154,6 +177,12 @@ const styles = {
         marginBottom: 50,
         alignSelf: "center"
     },
+    contentContainer: {
+        alignItems: "center"
+    },
+    text: {
+        fontFamily: "serif"
+    }
 }
 
 export { Home }
