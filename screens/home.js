@@ -53,12 +53,13 @@ class Home extends Component {
             <View style={[styles.view, { alignItems: "center" }]}>
                 <ButtonS1
                     onPress={this.handlePlay}
-                    imageSource={require("../assets/images/play-2.png")}
+                    imageSource={require("../assets/images/play-icon.png")}
+                    imageStyle={{ width: 140, height: 140 }}
                     text={this.state.tryAgain ? "Try Again" : null}
                     textColor={introColor}
                 />
                 <View style={{ position: "absolute", bottom: 20, justifyContent: "center" }}>
-                    <ButtonS2 text={"Exit"} onPress={() => BackHandler.exitApp()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
+                    <ButtonS2 text={"Exit Game"} textColor={introColor} onPress={() => BackHandler.exitApp()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
                 </View>
             </View>
         )
@@ -83,16 +84,16 @@ class Home extends Component {
             let { title, isSmile, answer } = data[this.state.levelCount]
             return (
                 <View style={styles.view}>
-                    <View style={{ flexDirection: "row", alignItems: "center", justifyContent: 'center', marginTop: 20 }}>
-                        <View style={{ backgroundColor: greenColor, width: 110, alignItems: "center", borderWidth: 1, borderTopLeftRadius: 10, borderColor: "white" }}>
+                    <View style={{ flexDirection: "row", justifyContent: 'flex-end', marginTop: 20, bottom: -1 }}>
+                        <View style={{ backgroundColor: greenColor, width: 110, alignItems: "center", borderWidth: 1, borderTopLeftRadius: 10, borderColor: "white", left: 0.5 }}>
                             <Text style={{ ...styles.text, color: "white" }}>Round {this.state.levelCount + 1} of {data.length}</Text>
                         </View>
-                        <View style={{ backgroundColor: this.timerColor(), width: 110, alignItems: "center", borderWidth: 1, borderTopRightRadius: 10, borderColor: "white" }}>
+                        <View style={{ backgroundColor: this.timerColor(), width: 110, alignItems: "center", borderWidth: 1, borderTopRightRadius: 10, borderColor: "white", right: 0.5 }}>
                             <Text style={{ ...styles.text, color: "white" }}>30:{this.state.timer < 10 ? "0" + this.state.timer : this.state.timer}</Text>
                         </View>
                     </View>
                     <LevelComponent title={title} isSmile={isSmile} onPress={this.handleOnPress} answer={answer} />
-                </View>
+                </View >
             )
         }
     }

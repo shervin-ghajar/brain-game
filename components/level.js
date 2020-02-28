@@ -67,7 +67,7 @@ const styles = {
     imageContainer: {
         flex: 0.4,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
     },
     imageStyle: {
         width: 200,

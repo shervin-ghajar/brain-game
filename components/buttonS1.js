@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, TouchableOpacity, Image } from 'react-native';
 
-const ButtonS1 = ({ btnContainerStyle, imageSource, onPress, text, textColor }) => {
+const ButtonS1 = ({ btnContainerStyle, imageSource, imageStyle, onPress, text, textColor }) => {
     return (
         <TouchableOpacity
             onPress={onPress}
             style={{ ...styles.btnContainer, btnContainerStyle }}>
-            <Image style={{ ...styles.img }} source={imageSource} />
+            <Image style={{ ...styles.img, ...imageStyle }} source={imageSource} />
             {
                 text ?
                     <Text style={{ ...styles.text, color: textColor }}>
