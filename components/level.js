@@ -28,9 +28,9 @@ class LevelComponent extends Component {
                 <View style={styles.imageContainer}>
                     {
                         this.props.isSmile ?
-                            <Image source={require("../assets/images/smily-face.png")} style={styles.imageStyle} />
+                            <Image source={require("../assets/images/smily-face-white2.png")} style={styles.imageStyle} />
                             :
-                            <Image source={require("../assets/images/sad-face.png")} style={styles.imageStyle} />
+                            <Image source={require("../assets/images/sad-face-white2.png")} style={styles.imageStyle} />
                     }
                 </View>
                 <View style={styles.answerContainer}>
@@ -55,9 +55,9 @@ const styles = {
         flex: 0.15,
         alignItems: "center",
         justifyContent: 'center',
-        borderColor: "lightgray",
-        borderRadius: 5,
-        borderWidth: 2
+        borderColor: "white",
+        borderRadius: 50,
+        borderWidth: 1
     },
     titleStyle: {
         fontSize: 25,
