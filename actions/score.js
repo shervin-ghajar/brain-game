@@ -7,10 +7,8 @@ import {
 // ----------------------------------------------------------------
 export const updateScore = (userScore) => {
     return dispatch => {
-        console.warn("action started", userScore)
         dispatch(setNewScoreStarted());
         dispatch(setNewScoreSuccess(userScore))
-
     };
 };
 
