@@ -34,17 +34,18 @@ class Home extends Component {
     timeCounter = () => {
         this.setState({ timer: this.state.timer + 1 }, () => {
             if (this.state.timer > 59) {
+                this.timeEnded = "Time is Up"
                 if (this.state.levelCount !== data.length) {
                     clearInterval(this.interval)
                     this.setState({ tryAgain: true, levelCount: 0 })
                 }
             }
         })
-
     }
 
     handlePlay = () => {
         this.setState({ isPlayed: true, isPaused: false, isFinished: false, tryAgain: false, levelCount: 0, timer: 0 }, () => {
+            this.timeEnded = null
             this.interval = setInterval(this.timeCounter, 1000);
         })
     }
@@ -66,7 +67,7 @@ class Home extends Component {
         if (this.state.isPaused) {
             text = "Continue"
         } else if (this.state.tryAgain) {
-            text = "Try Again"
+            text = `${this.timeEnded || "wrong"}!\ntry again`
         }
         let onPress = this.state.isPaused ? this.handleContinue : this.handlePlay
         return (
@@ -78,7 +79,7 @@ class Home extends Component {
                     text={text}
                     textColor={introColor}
                 />
-                <View style={{ position: "absolute", bottom: 0, justifyContent: "center" }}>
+                <View style={{ position: "absolute", bottom: 5, justifyContent: "center" }}>
                     <ButtonS2 text={"Exit Game"} textColor={introColor} onPress={() => BackHandler.exitApp()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
                 </View>
             </View>
@@ -113,7 +114,7 @@ class Home extends Component {
                         </View>
                     </View>
                     <LevelComponent title={title} isSmile={isSmile} onPress={this.handleOnPress} answer={answer} />
-                    <View style={{ position: "absolute", bottom: 0, justifyContent: "center" }}>
+                    <View style={{ position: "absolute", bottom: 5, justifyContent: "center" }}>
                         <ButtonS2 text={"Pause"} textColor={introColor} onPress={() => this.handlePause()} imageSource={require("../assets/images/pause-icon.png")} />
                     </View>
                 </View >

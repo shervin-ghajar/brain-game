@@ -28,8 +28,9 @@ const styles = {
     },
     text: {
         fontFamily: "serif",
-        fontSize: 13,
-        color: "white"
+        fontSize: 12,
+        color: "white",
+        textTransform: "uppercase"
     }
 }
 export { ButtonS2 };

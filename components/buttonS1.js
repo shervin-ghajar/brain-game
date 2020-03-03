@@ -32,7 +32,10 @@ const styles = {
         fontFamily: "serif",
         fontWeight: "bold",
         fontSize: 18,
-        marginVertical: 15,
+        marginVertical: 10,
+        textAlign: "center",
+        lineHeight: 30,
+        textTransform: "uppercase"
     }
 
 }

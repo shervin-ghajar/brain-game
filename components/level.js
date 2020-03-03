@@ -62,7 +62,7 @@ const styles = {
     titleStyle: {
         fontSize: 25,
         fontFamily: "serif",
-        color: "white"
+        color: "white",
     },
     imageContainer: {
         flex: 0.4,
