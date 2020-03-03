@@ -31,8 +31,8 @@ const styles = {
         color: "white",
         fontFamily: "serif",
         fontWeight: "bold",
-        fontSize: 18,
-        marginVertical: 10,
+        fontSize: 17,
+        // marginVertical: 5,
         textAlign: "center",
         lineHeight: 30,
         textTransform: "uppercase"

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, Animated, Easing, BackHandler, Dimensions } from 'react-native';
 import LottieView from 'lottie-react-native';
+import { connect } from "react-redux";
 //---------------------------------------------------------------------------------
 import { ButtonS1, LevelComponent, ButtonS2 } from '../components';
 import { introColor, greenColor, redColor, orangeColor } from '../assets/colors';
 import { data } from "../services/api"
+import { updateScore } from '../actions';
 import finishAnimation from '../assets/animations/ontime-finished.json'
 //---------------------------------------------------------------------------------
 class Home extends Component {
@@ -43,6 +45,10 @@ class Home extends Component {
         })
     }
 
+    handleExitGame() {
+        return BackHandler.exitApp()
+    }
+
     handlePlay = () => {
         this.setState({ isPlayed: true, isPaused: false, isFinished: false, tryAgain: false, levelCount: 0, timer: 0 }, () => {
             this.timeEnded = null
@@ -67,7 +73,7 @@ class Home extends Component {
         if (this.state.isPaused) {
             text = "Continue"
         } else if (this.state.tryAgain) {
-            text = `${this.timeEnded || "wrong"}!\ntry again`
+            text = this.timeEnded || "wrong!\ntry again"
         }
         let onPress = this.state.isPaused ? this.handleContinue : this.handlePlay
         return (
@@ -80,7 +86,7 @@ class Home extends Component {
                     textColor={introColor}
                 />
                 <View style={{ position: "absolute", bottom: 5, justifyContent: "center" }}>
-                    <ButtonS2 text={"Exit Game"} textColor={introColor} onPress={() => BackHandler.exitApp()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
+                    <ButtonS2 text={"Exit Game"} textColor={introColor} onPress={() => this.handleExitGame()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
                 </View>
             </View>
         )
@@ -91,6 +97,13 @@ class Home extends Component {
             if ((this.state.levelCount + 1) == data.length) {
                 clearInterval(this.interval)
                 this.setState({ isFinished: true })
+                if (this.props.scoreReducer.userScore) {
+                    if (this.props.scoreReducer.userScore > this.state.timer) {
+                        this.props.onUpdateScore(this.state.timer)
+                    }
+                } else {
+                    this.props.onUpdateScore(this.state.timer)
+                }
                 return;
             }
             this.setState({ levelCount: this.state.levelCount + 1 })
@@ -159,11 +172,11 @@ class Home extends Component {
                     </View>
                     <View style={{ position: "absolute", bottom: 20, alignItems: "center" }}>
                         <Text style={{ ...styles.text, color: introColor, fontSize: 20, fontWeight: "bold", }}>Your Score: {this.state.timer}s</Text>
-                        <Text style={{ ...styles.text, color: "white", fontSize: 17, marginVertical: 5 }}>Best Score: 27s</Text>
+                        <Text style={{ ...styles.text, color: "white", fontSize: 17, marginVertical: 5 }}>Best Score: {this.props.scoreReducer.userScore}s</Text>
                     </View>
                 </View>
                 <View style={{ width: deviceWidth, flexDirection: "row", position: "absolute", bottom: 20, alignItems: "center", justifyContent: "space-around" }}>
-                    <ButtonS2 onPress={{}} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
+                    <ButtonS2 onPress={() => this.handleExitGame()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
                     <ButtonS2 onPress={() => this.handlePlay()} imageSource={require("../assets/images/retry-icon.png")} />
                 </View>
             </View>
@@ -210,5 +223,20 @@ const styles = {
         fontFamily: "serif"
     }
 }
+// ----------------------------------------------------------------
+const mapStateToProps = state => {
+    let { scoreReducer } = state;
+    return {
+        scoreReducer
+    };
+};
 
-export { Home }
+const mapDispatchToProps = dispatch => {
+    return {
+        onUpdateScore: (userScore) => {
+            dispatch(updateScore(userScore));
+        },
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+// ----------------------------------------------------------------

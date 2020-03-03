@@ -3,9 +3,7 @@ import {
     createStackNavigator,
     createAppContainer,
 } from 'react-navigation';
-// import Header from '../components/header';
-// import BottomNavigation from '../components/bottomNavigation';
-import { Home } from '../screens/';
+import Home from '../screens/home';
 
 const RootStack = createStackNavigator({
     Home: {
