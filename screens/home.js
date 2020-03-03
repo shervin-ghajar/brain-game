@@ -14,6 +14,7 @@ class Home extends Component {
             isPlayed: false,
             tryAgain: false,
             isFinished: false,
+            isPaused: false,
             levelCount: 0,
             timer: 0
         };
@@ -43,22 +44,41 @@ class Home extends Component {
     }
 
     handlePlay = () => {
-        this.setState({ isFinished: false, isPlayed: true, tryAgain: false, levelCount: 0, timer: 0 }, () => {
+        this.setState({ isPlayed: true, isPaused: false, isFinished: false, tryAgain: false, levelCount: 0, timer: 0 }, () => {
             this.interval = setInterval(this.timeCounter, 1000);
         })
     }
 
-    renderPlay = () => {
+    handlePause = () => {
+        this.setState({ isPaused: true, isPlayed: false, isFinished: false, tryAgain: false }, () => {
+            clearInterval(this.interval)
+        })
+    }
+
+    handleContinue = () => {
+        this.setState({ isPaused: false, isFinished: false, isPlayed: true, tryAgain: false, }, () => {
+            this.interval = setInterval(this.timeCounter, 1000);
+        })
+    }
+
+    renderMain = () => {
+        let text = null
+        if (this.state.isPaused) {
+            text = "Continue"
+        } else if (this.state.tryAgain) {
+            text = "Try Again"
+        }
+        let onPress = this.state.isPaused ? this.handleContinue : this.handlePlay
         return (
             <View style={[styles.view, { alignItems: "center" }]}>
                 <ButtonS1
-                    onPress={this.handlePlay}
+                    onPress={onPress}
                     imageSource={require("../assets/images/play-icon.png")}
                     imageStyle={{ width: 140, height: 140 }}
-                    text={this.state.tryAgain ? "Try Again" : null}
+                    text={text}
                     textColor={introColor}
                 />
-                <View style={{ position: "absolute", bottom: 20, justifyContent: "center" }}>
+                <View style={{ position: "absolute", bottom: 0, justifyContent: "center" }}>
                     <ButtonS2 text={"Exit Game"} textColor={introColor} onPress={() => BackHandler.exitApp()} imageSource={require("../assets/images/exit-icon.png")} imageStyle={{ marginRight: 15 }} />
                 </View>
             </View>
@@ -93,6 +113,9 @@ class Home extends Component {
                         </View>
                     </View>
                     <LevelComponent title={title} isSmile={isSmile} onPress={this.handleOnPress} answer={answer} />
+                    <View style={{ position: "absolute", bottom: 0, justifyContent: "center" }}>
+                        <ButtonS2 text={"Pause"} textColor={introColor} onPress={() => this.handlePause()} imageSource={require("../assets/images/pause-icon.png")} />
+                    </View>
                 </View >
             )
         }
@@ -150,13 +173,14 @@ class Home extends Component {
     render() {
         if (this.state.isFinished) {
             return this.renderFinish()
-        }
-        else if (this.state.tryAgain) {
-            return this.renderPlay()
+        } else if (this.state.tryAgain) {
+            return this.renderMain()
         } else if (this.state.isPlayed) {
             return this.renderLevel()
+        } else if (this.state.isPaused) {
+            return this.renderMain()
         }
-        return this.renderPlay()
+        return this.renderMain()
     }
 }
 
