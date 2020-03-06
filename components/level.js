@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { ButtonS2 } from './buttonS2';
 import { greenColor, redColor } from '../assets/colors';
+import FontFamily from '../assets/fonts';
 //--------------------------------------------------------------------------
 class LevelComponent extends Component {
     constructor(props) {
@@ -61,7 +62,7 @@ const styles = {
     },
     titleStyle: {
         fontSize: 25,
-        fontFamily: "serif",
+        fontFamily: FontFamily.font,
         color: "white",
     },
     imageContainer: {

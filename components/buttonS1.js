@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity, Image } from 'react-native';
+import FontFamily from '../assets/fonts';
 
 const ButtonS1 = ({ btnContainerStyle, imageSource, imageStyle, onPress, text, textColor }) => {
     return (
@@ -29,7 +30,7 @@ const styles = {
     },
     text: {
         color: "white",
-        fontFamily: "serif",
+        fontFamily: FontFamily.font,
         fontWeight: "bold",
         fontSize: 17,
         // marginVertical: 5,

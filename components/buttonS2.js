@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
+import FontFamily from '../assets/fonts';
 
 const ButtonS2 = ({ onPress, text, textColor, imageSource, imageStyle, borderColor, btnContainerStyle }) => (
     <TouchableOpacity style={[styles.btnContainer, btnContainerStyle, borderColor ? { borderColor } : { borderWidth: 0 }]} onPress={onPress}>
@@ -27,7 +28,7 @@ const styles = {
         height: 50,
     },
     text: {
-        fontFamily: "serif",
+        fontFamily: FontFamily.font,
         fontSize: 12,
         color: "white",
         textTransform: "uppercase"

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { introColor } from '../assets/colors';
+import FontFamily from '../assets/fonts';
 import introAnimation from '../assets/animations/intro.json'
 //--------------------------------------------------------------------------------------------
 class Intro extends Component {
@@ -67,7 +68,7 @@ const styles = {
     titleStyle: {
         color: "#444A54",
         fontSize: 25,
-        fontFamily: "serif",
+        fontFamily: FontFamily.font,
         fontWeight: "bold",
         position: "absolute",
         alignSelf: "center",

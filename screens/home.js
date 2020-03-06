@@ -7,6 +7,7 @@ import { ButtonS1, LevelComponent, ButtonS2 } from '../components';
 import { introColor, greenColor, redColor, orangeColor } from '../assets/colors';
 import { data } from "../services/api"
 import { updateScore } from '../actions';
+import FontFamily from '../assets/fonts';
 import finishAnimation from '../assets/animations/ontime-finished.json'
 //---------------------------------------------------------------------------------
 class Home extends Component {
@@ -102,7 +103,7 @@ class Home extends Component {
                         this.props.onUpdateScore(this.state.timer)
                     }
                 } else {
-                    this.props.onUpdateScore(this.state.timer)
+                    this.props.scoreReducer.userScore = this.state.timer
                 }
                 return;
             }
@@ -220,7 +221,7 @@ const styles = {
         alignItems: "center"
     },
     text: {
-        fontFamily: "serif"
+        fontFamily: FontFamily.font
     }
 }
 // ----------------------------------------------------------------
