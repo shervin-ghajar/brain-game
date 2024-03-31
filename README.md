@@ -69,7 +69,7 @@ npx react-native run-android
 <!-- LICENSE -->
 ## License
 
-[MIT](LICENSE)
+This project is licensed under the [MIT License](LICENSE).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
