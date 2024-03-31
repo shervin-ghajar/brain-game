@@ -46,7 +46,7 @@ Welcome to the Brain Game - Happy or Sad! This mobile app is designed to test yo
 
   - Clone the repo
    ```sh
-   git clone https://github.com/shervin-ghajar/mbgame.git
+   git clone https://github.com/shervin-ghajar/brain-game.git
    ```
    - Navigate to the project directory and install NPM packages
 ```bash
