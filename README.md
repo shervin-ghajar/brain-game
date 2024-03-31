@@ -5,7 +5,7 @@
 
 Welcome to the Brain Game - Happy or Sad! This mobile app is designed to test your comprehension skills by matching phrases with corresponding facial expressions. Are you ready to challenge your brain and have some fun?
 
-#Screenshots
+# Screenshots
 <div align="center">  
     <img src="screenshots/intro.jpg" alt="intro" width="150" >
     <img src="screenshots/main.jpg" alt="main" width="150" >
