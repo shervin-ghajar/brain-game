@@ -1,5 +1,5 @@
 <a name="readme-top"></a>
-
+[![linkedin][linkedin-shield]][linkedin-url]
 <!-- TITLE -->
 # Brain Game - Happy or Sad?
 
@@ -63,9 +63,9 @@ npx react-native run-android
 <!-- CONTACT -->
 ## Contact Me
 
-### Shervin Ghajar
-- [![linkedin][linkedin-shield]][linkedin-url]
-- [![Gmail][gmail-shield]][gmail-url]
+#### Shervin Ghajar
+- [Linkedin][linkedin-url]
+- Gmail: ssghajar.work@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
