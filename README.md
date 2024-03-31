@@ -1,15 +1,20 @@
 <a name="readme-top"></a>
 
-[![linkedin][linkedin-shield]][linkedin-url]
+<!-- TITLE -->
 # Brain Game - Happy or Sad?
 
 Welcome to the Brain Game - Happy or Sad! This mobile app is designed to test your comprehension skills by matching phrases with corresponding facial expressions. Are you ready to challenge your brain and have some fun?
+
+
 <div align="center">  
-<a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="android/app/src/main/res/mipmap-hdpi/ic_launcher.png" alt="Logo" width="80" height="80">
-</a>
+    <img src="screenshots/intro.jpg" alt="intro" width="150" >
+    <img src="screenshots/main.jpg" alt="main" width="150" >
+    <img src="screenshots/step_1.jpg" alt="step_1" width="150" >
+    <img src="screenshots/step_2.jpg" alt="step_2" width="150" >
+    <img src="screenshots/end.jpg" alt="end" width="150" >
 </div>
-  
+
+<!-- FEATURES -->
 ## Features
 
 - Test your comprehension skills by matching phrases with happy or sad faces.
@@ -17,6 +22,7 @@ Welcome to the Brain Game - Happy or Sad! This mobile app is designed to test yo
 - 15 levels of increasing difficulty.
 - Timer to challenge yourself to complete the game in under 30, 50, or 60 seconds.
 
+<!-- DESCRIPTION -->
 ## How to Play
 - Launch the app and start a new game.
 - On each level, a phrase will be displayed along with a happy or sad face image.
@@ -25,7 +31,7 @@ Welcome to the Brain Game - Happy or Sad! This mobile app is designed to test yo
 - Continue through all 15 levels as quickly as possible.
 - Try to complete the game in under 30, 50, or 60 seconds for optimal performance.
 
-
+<!-- TECH STACK -->
 ## Tech Stack
 
 - [![reactnative][reactnative-shield]][reactnative-url]
@@ -35,7 +41,7 @@ Welcome to the Brain Game - Happy or Sad! This mobile app is designed to test yo
 - [![lottie][lottie-shield]][lottie-url]
 - [![axios][axios-shield]][axios-url]
 
-
+<!-- INSTALLATION -->
 ## Installation
 
   - Clone the repo
@@ -55,11 +61,11 @@ npx react-native run-ios
 npx react-native run-android
 ```
 <!-- CONTACT -->
-## Contact
+## Contact Me
 
-Shervin Ghajar - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+### Shervin Ghajar
+- [![linkedin][linkedin-shield]][linkedin-url]
+- [![Gmail][gmail-shield]][gmail-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -69,6 +75,9 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 [linkedin-shield]: https://img.shields.io/badge/Linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://www.linkedin.com/in/shervin-ghajar-254258180/
+
+[gmail-shield]: https://shields.io/badge/Gmail-white?logo=gmail
+[gmail-url]: ssghajar.work@gmail.com
 
 [reactnative-shield]: https://shields.io/badge/React_Native-black?logo=react
 [reactnative-url]: https://reactnative.dev/
@@ -89,7 +98,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [axios-shield]: https://shields.io/badge/Axios-darkgreen?logo=axios
 [axios-url]: https://www.npmjs.com/package/axios
 
-[product-screenshot]: android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+[product-screenshot]: screenshots/intro.jpg
 
 
 
