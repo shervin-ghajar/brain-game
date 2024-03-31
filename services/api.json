@@ -1,0 +1,93 @@
+{
+    "data": [{
+            "id": 0,
+            "title": "The face is smiling",
+            "isSmile": true,
+            "answer": true
+        },
+        {
+            "id": 1,
+            "title": "The face is sad",
+            "isSmile": true,
+            "answer": false
+        },
+        {
+            "id": 2,
+            "title": "The face is smiling",
+            "isSmile": true,
+            "answer": true
+        },
+        {
+            "id": 3,
+            "title": "The face is smiling",
+            "isSmile": false,
+            "answer": false
+        },
+        {
+            "id": 4,
+            "title": "The face is not smiling",
+            "isSmile": true,
+            "answer": false
+        },
+        {
+            "id": 5,
+            "title": "The face is smiling",
+            "isSmile": true,
+            "answer": true
+        },
+        {
+            "id": 6,
+            "title": "The face is not sad",
+            "isSmile": false,
+            "answer": false
+        },
+        {
+            "id": 7,
+            "title": "The face is sad",
+            "isSmile": true,
+            "answer": false
+        },
+        {
+            "id": 8,
+            "title": "The face is smiling",
+            "isSmile": true,
+            "answer": true
+        },
+        {
+            "id": 9,
+            "title": "The face is sad",
+            "isSmile": false,
+            "answer": true
+        },
+        {
+            "id": 10,
+            "title": "The face is not sad",
+            "isSmile": true,
+            "answer": true
+        },
+        {
+            "id": 11,
+            "title": "The face is not smiling",
+            "isSmile": true,
+            "answer": false
+        },
+        {
+            "id": 12,
+            "title": "The face is not smiling",
+            "isSmile": false,
+            "answer": true
+        },
+        {
+            "id": 13,
+            "title": "The face is not sad",
+            "isSmile": true,
+            "answer": true
+        },
+        {
+            "id": 14,
+            "title": "The face is sad",
+            "isSmile": false,
+            "answer": true
+        }
+    ]
+}
