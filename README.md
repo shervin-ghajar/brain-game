@@ -66,6 +66,10 @@ npx react-native run-android
 #### Shervin Ghajar
 - [Linkedin][linkedin-url]
 - Gmail: ssghajar.work@gmail.com
+<!-- LICENSE -->
+## License
+
+[MIT](LICENSE)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
