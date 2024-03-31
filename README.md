@@ -83,23 +83,23 @@ npx react-native run-android
 [gmail-shield]: https://shields.io/badge/Gmail-white?logo=gmail
 [gmail-url]: ssghajar.work@gmail.com
 
-[reactnative-shield]: https://shields.io/badge/React_Native-black?logo=react
+[reactnative-shield]: https://shields.io/badge/React_Native-v0.61.5-blue?logo=react
 [reactnative-url]: https://reactnative.dev/
 
-[react-shield]: https://shields.io/badge/React-blue?logo=react
+[react-shield]: https://shields.io/badge/React-v16.9.0-blue?logo=react
 [react-url]: https://react.dev/
 
-[reactnavigation-shield]: https://shields.io/badge/React_Navigation-red?logo=react-navigation
+[reactnavigation-shield]: https://shields.io/badge/React_Navigation-v3.0.9-blue?logo=react-navigation
 [reactnavigation-url]: https://reactnavigation.org/
 
-[redux-shield]: https://shields.io/badge/Redux-green?logo=redux
+[redux-shield]: https://shields.io/badge/Redux-v4.0.1-blue?logo=redux
 [redux-url]: https://redux.js.org/
 
 
-[lottie-shield]: https://shields.io/badge/Lottie-orange?logo=lottie
+[lottie-shield]: https://shields.io/badge/lottie--react--native-v3.3.2-blue?logo=lottie
 [lottie-url]: https://www.npmjs.com/package/lottie-react-native
 
-[axios-shield]: https://shields.io/badge/Axios-darkgreen?logo=axios
+[axios-shield]: https://shields.io/badge/Axios-v0.19.2-blue?logo=axios
 [axios-url]: https://www.npmjs.com/package/axios
 
 [product-screenshot]: screenshots/intro.jpg
